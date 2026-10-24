@@ -1,0 +1,16 @@
+{
+  "name": "subtitle-css",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Firefox extension for customizing YouTube subtitles on Android and Desktop",
+  "scripts": {
+    "lint": "addons-linter src",
+    "build": "web-ext build --source-dir src --overwrite-dest",
+    "start": "web-ext run --source-dir src"
+  },
+  "devDependencies": {
+    "addons-linter": "^7.1.0",
+    "web-ext": "^8.2.0"
+  }
+}
+
