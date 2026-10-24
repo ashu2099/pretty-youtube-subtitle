@@ -1,4 +1,4 @@
-import { DEFAULTS } from "../core/constants.js";
+const { DEFAULTS } = globalThis;
 import { Store } from "../core/store.js";
 import { loadSettings, saveSettings } from "../core/storage.js";
 import { updatePreview } from "./preview.js";

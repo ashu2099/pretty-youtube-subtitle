@@ -1,4 +1,4 @@
-import { DEFAULTS, DEFAULT_CONFIG } from "../core/constants.js";
+const { DEFAULTS, DEFAULT_CONFIG } = globalThis;
 
 export const updatePreview = (previewEl, settings) => {
   const size =

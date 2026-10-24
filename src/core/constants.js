@@ -1,6 +1,6 @@
-export const STYLE_ID = "yt-subtitle-custom-style";
+const mainStyleId = "yt-subtitle-custom-style";
 
-export const DEFAULTS = {
+const mainDefaults = {
   fontSize: "22",
   fontColor: "#ffffff",
   bgColor: "#000000",
@@ -9,9 +9,9 @@ export const DEFAULTS = {
   textShadow: false,
 };
 
-export const DEFAULT_CONFIG = {
+const mainDefaultConfig = {
   stroke: {
-    yes: "paint-order: stroke fill !important; -webkit-text-stroke: 1px black !important;",
+    yes: "paint-order: stroke fill !important; -webkit-text-stroke: 2px black !important;",
     no: "-webkit-text-stroke: 0px !important;",
   },
   shadow: {
@@ -20,3 +20,9 @@ export const DEFAULT_CONFIG = {
   },
   captionWindow: "background-color: transparent !important;",
 };
+
+Object.assign(globalThis, {
+  STYLE_ID: mainStyleId,
+  DEFAULTS: mainDefaults,
+  DEFAULT_CONFIG: mainDefaultConfig,
+});

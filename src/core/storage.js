@@ -1,4 +1,4 @@
-import { DEFAULTS } from "./constants.js";
+const { DEFAULTS } = globalThis;
 
 export const loadSettings = async () => browser.storage.local.get(DEFAULTS);
 
