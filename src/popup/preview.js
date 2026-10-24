@@ -1,4 +1,4 @@
-export function updatePreview(previewEl, settings) {
+export const updatePreview = (previewEl, settings) => {
   const size = parseInt(settings.fontSize, 10) || 22;
   const color = settings.fontColor || "#ffffff";
 
@@ -20,4 +20,4 @@ export function updatePreview(previewEl, settings) {
   } else {
     previewEl.style.textShadow = "none";
   }
-}
+};

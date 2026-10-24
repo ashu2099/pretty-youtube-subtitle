@@ -2,7 +2,7 @@ import fs from "node:fs";
 import path from "node:path";
 import zlib from "node:zlib";
 
-function crc32(buf) {
+const crc32 = (buf) => {
   let table = [];
   for (let n = 0; n < 256; n++) {
     let c = n;
@@ -16,9 +16,9 @@ function crc32(buf) {
     c = table[(c ^ buf[i]) & 0xff] ^ (c >>> 8);
   }
   return (c ^ 0xffffffff) >>> 0;
-}
+};
 
-function makeChunk(type, data) {
+const makeChunk = (type, data) => {
   const typeBuf = Buffer.from(type, "ascii");
   const lenBuf = Buffer.alloc(4);
   lenBuf.writeUInt32BE(data.length, 0);
@@ -29,9 +29,9 @@ function makeChunk(type, data) {
   crcBuf.writeUInt32BE(crc, 0);
 
   return Buffer.concat([lenBuf, body, crcBuf]);
-}
+};
 
-function generateIcon(size, outPath) {
+const generateIcon = (size, outPath) => {
   const sig = Buffer.from([0x89, 0x50, 0x4e, 0x47, 0x0d, 0x0a, 0x1a, 0x0a]);
 
   // IHDR
@@ -121,10 +121,10 @@ function generateIcon(size, outPath) {
   const finalPng = Buffer.concat([sig, ihdrChunk, idatChunk, iendChunk]);
   fs.mkdirSync(path.dirname(outPath), { recursive: true });
   fs.writeFileSync(outPath, finalPng);
-}
+};
 
 const iconsDir = path.join(process.cwd(), "src", "icons");
 generateIcon(48, path.join(iconsDir, "icon-48.png"));
 generateIcon(96, path.join(iconsDir, "icon-96.png"));
 generateIcon(128, path.join(iconsDir, "icon-128.png"));
-console.log("Generated icons in " + iconsDir);
+console.log(`Generated icons in ${iconsDir}`);

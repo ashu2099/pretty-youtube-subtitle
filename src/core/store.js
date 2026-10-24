@@ -9,7 +9,7 @@ export class Store {
   }
 
   setState(updates) {
-    this.state = Object.assign({}, this.state, updates);
+    this.state = { ...this.state, ...updates };
     for (const listener of this.listeners) {
       listener(this.state);
     }

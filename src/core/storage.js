@@ -1,17 +1,14 @@
 import { DEFAULTS } from "./constants.js";
 
-export function loadSettings() {
-  return browser.storage.local.get(DEFAULTS);
-}
+export const loadSettings = async () => browser.storage.local.get(DEFAULTS);
 
-export function saveSettings(settings) {
-  return browser.storage.local.set(settings);
-}
+export const saveSettings = async (settings) => browser.storage.local.set(settings);
 
-export function onSettingsChanged(callback) {
-  browser.storage.onChanged.addListener((changes, area) => {
+export const onSettingsChanged = (callback) => {
+  browser.storage.onChanged.addListener(async (changes, area) => {
     if (area === "local") {
-      loadSettings().then(callback);
+      const settings = await loadSettings();
+      callback(settings);
     }
   });
-}
+};
