@@ -1,5 +1,3 @@
-import { hexOrNameToRgba } from "../core/css-builder.js";
-
 export function updatePreview(previewEl, settings) {
   const size = parseInt(settings.fontSize, 10) || 22;
   const color = settings.fontColor || "#ffffff";
@@ -7,7 +5,7 @@ export function updatePreview(previewEl, settings) {
   previewEl.style.fontSize = `${size}px`;
   previewEl.style.color = color;
   previewEl.style.webkitTextFillColor = color;
-  previewEl.style.backgroundColor = hexOrNameToRgba(settings.bgColor, settings.bgOpacity);
+  previewEl.style.backgroundColor = `rgb(from ${settings.bgColor || "#000000"} r g b / ${settings.bgOpacity || "0.75"})`;
 
   if (settings.textStroke === "yes") {
     previewEl.style.paintOrder = "stroke fill";

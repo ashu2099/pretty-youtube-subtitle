@@ -6,7 +6,7 @@
   "browser_specific_settings": {
     "gecko": {
       "id": "yt-subtitle-styler@local",
-      "strict_min_version": "120.0"
+      "strict_min_version": "128.0"
     }
   },
   "permissions": [

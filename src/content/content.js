@@ -10,45 +10,10 @@
     textShadow: "no"
   };
 
-  const BASIC_COLORS = {
-    black: "0, 0, 0",
-    white: "255, 255, 255",
-    gray: "128, 128, 128",
-    grey: "128, 128, 128",
-    red: "255, 0, 0",
-    green: "0, 128, 0",
-    blue: "0, 0, 255",
-    yellow: "255, 255, 0",
-    cyan: "0, 255, 255",
-    magenta: "255, 0, 255",
-    navy: "0, 0, 128"
-  };
-
-  function hexOrNameToRgba(color, opacity) {
-    const op = parseFloat(opacity);
-    const alpha = Number.isFinite(op) ? Math.max(0, Math.min(1, op)) : 0.75;
-    if (!color) {
-      return `rgba(0, 0, 0, ${alpha})`;
-    }
-    const trimmed = color.trim().toLowerCase();
-    if (/^#([0-9a-f]{3}|[0-9a-f]{6})$/i.test(trimmed)) {
-      let hex = trimmed.substring(1);
-      if (hex.length === 3) {
-        hex = hex.split("").map((c) => c + c).join("");
-      }
-      const num = parseInt(hex, 16);
-      return `rgba(${(num >> 16) & 255}, ${(num >> 8) & 255}, ${num & 255}, ${alpha})`;
-    }
-    if (BASIC_COLORS[trimmed]) {
-      return `rgba(${BASIC_COLORS[trimmed]}, ${alpha})`;
-    }
-    return `rgba(0, 0, 0, ${alpha})`;
-  }
-
   function buildCss(settings) {
     const size = parseInt(settings.fontSize, 10) || 22;
     const color = settings.fontColor || "#ffffff";
-    const bg = hexOrNameToRgba(settings.bgColor, settings.bgOpacity);
+    const bg = `rgb(from ${settings.bgColor || "#000000"} r g b / ${settings.bgOpacity || "0.75"})`;
     const stroke = settings.textStroke === "yes"
       ? "paint-order: stroke fill !important; -webkit-text-stroke: 1px black !important;"
       : "-webkit-text-stroke: 0px !important;";
