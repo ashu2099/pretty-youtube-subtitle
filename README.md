@@ -66,6 +66,7 @@ npm install
 ## Testing on Desktop
 
 ### Option A: Automatic Dev Server (Recommended)
+
 Launch a clean Firefox instance with the extension pre-loaded:
 
 ```bash
@@ -75,6 +76,7 @@ npm run start
 This starts `web-ext run`. Any file changes reload automatically.
 
 ### Option B: Manual Loading via `about:debugging`
+
 1. Open Firefox Desktop.
 2. In the URL bar, go to:
    ```
@@ -90,18 +92,21 @@ This starts `web-ext run`. Any file changes reload automatically.
 ## Testing on Android (Firefox for Android)
 
 ### Step 1: Enable USB Debugging on Your Phone
+
 1. Open your Android device **Settings** -> **About Phone**.
 2. Tap **Build Number** 7 times to enable Developer Options.
 3. Go to **Settings** -> **Developer Options** and turn on **USB Debugging**.
 4. Connect your phone to your computer with a USB cable.
 
 ### Step 2: Enable Remote Debugging in Firefox for Android
+
 1. Open **Firefox** on your Android phone.
 2. Tap the three-dot menu (`⋮`) -> **Settings** -> **About Firefox**.
 3. Tap the **Firefox logo** 5 times to unlock Developer settings.
 4. Go back to **Settings** and enable **Remote USB Debugging**.
 
 ### Step 3: Connect and Load Extension
+
 1. In desktop Firefox, navigate to:
    ```
    about:debugging
@@ -120,6 +125,7 @@ This starts `web-ext run`. Any file changes reload automatically.
 ## Building and Packaging
 
 ### Linting (Mozilla AMO Compatibility Check)
+
 Run the Mozilla Add-ons linter to check for syntax and policy errors:
 
 ```bash
@@ -127,6 +133,7 @@ npm run lint
 ```
 
 ### Packaging for Release
+
 Build the distribution `.zip` archive:
 
 ```bash
@@ -134,6 +141,7 @@ npm run build
 ```
 
 The output file is generated in `web-ext-artifacts/`:
+
 ```
 web-ext-artifacts/youtube_subtitle_styler-1.0.0.zip
 ```

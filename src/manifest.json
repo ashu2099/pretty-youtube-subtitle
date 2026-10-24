@@ -9,20 +9,12 @@
       "strict_min_version": "128.0"
     }
   },
-  "permissions": [
-    "storage"
-  ],
-  "host_permissions": [
-    "*://*.youtube.com/*"
-  ],
+  "permissions": ["storage"],
+  "host_permissions": ["*://*.youtube.com/*"],
   "content_scripts": [
     {
-      "matches": [
-        "*://*.youtube.com/*"
-      ],
-      "js": [
-        "content/content.js"
-      ],
+      "matches": ["*://*.youtube.com/*"],
+      "js": ["content/content.js"],
       "run_at": "document_start"
     }
   ],

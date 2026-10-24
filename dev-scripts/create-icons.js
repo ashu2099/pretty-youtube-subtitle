@@ -60,10 +60,33 @@ const generateIcon = (size, outPath) => {
       const r = Math.min(x, size - 1 - x, y, size - 1 - y);
       const radius = size * 0.18;
       let bg = true;
-      if (x < radius && y < radius && Math.hypot(x - radius, y - radius) > radius) bg = false;
-      if (x >= size - radius && y < radius && Math.hypot(x - (size - radius), y - radius) > radius) bg = false;
-      if (x < radius && y >= size - radius && Math.hypot(x - radius, y - (size - radius)) > radius) bg = false;
-      if (x >= size - radius && y >= size - radius && Math.hypot(x - (size - radius), y - (size - radius)) > radius) bg = false;
+      if (
+        x < radius &&
+        y < radius &&
+        Math.hypot(x - radius, y - radius) > radius
+      )
+        bg = false;
+
+      if (
+        x >= size - radius &&
+        y < radius &&
+        Math.hypot(x - (size - radius), y - radius) > radius
+      )
+        bg = false;
+
+      if (
+        x < radius &&
+        y >= size - radius &&
+        Math.hypot(x - radius, y - (size - radius)) > radius
+      )
+        bg = false;
+
+      if (
+        x >= size - radius &&
+        y >= size - radius &&
+        Math.hypot(x - (size - radius), y - (size - radius)) > radius
+      )
+        bg = false;
 
       if (!bg) {
         rawData[pxOffset] = 0;
@@ -85,12 +108,25 @@ const generateIcon = (size, outPath) => {
       const line2Y = size * 0.58;
       const lineH = Math.max(2, size * 0.08);
 
-      const inLine1 = y >= line1Y && y < line1Y + lineH && x >= boxLeft + size * 0.1 && x <= boxRight - size * 0.1;
-      const inLine2 = y >= line2Y && y < line2Y + lineH && x >= boxLeft + size * 0.15 && x <= boxRight - size * 0.25;
+      const inLine1 =
+        y >= line1Y &&
+        y < line1Y + lineH &&
+        x >= boxLeft + size * 0.1 &&
+        x <= boxRight - size * 0.1;
+
+      const inLine2 =
+        y >= line2Y &&
+        y < line2Y + lineH &&
+        x >= boxLeft + size * 0.15 &&
+        x <= boxRight - size * 0.25;
 
       const onBoxBorder =
-        ((x >= boxLeft && x <= boxRight && (Math.abs(y - boxTop) <= 2 || Math.abs(y - boxBottom) <= 2)) ||
-        (y >= boxTop && y <= boxBottom && (Math.abs(x - boxLeft) <= 2 || Math.abs(x - boxRight) <= 2)));
+        (x >= boxLeft &&
+          x <= boxRight &&
+          (Math.abs(y - boxTop) <= 2 || Math.abs(y - boxBottom) <= 2)) ||
+        (y >= boxTop &&
+          y <= boxBottom &&
+          (Math.abs(x - boxLeft) <= 2 || Math.abs(x - boxRight) <= 2));
 
       if (inLine1 || inLine2) {
         // Bright Yellow/White subtitle line (#ffea00)

@@ -12,17 +12,30 @@ const getFormValues = () => ({
   fontColor: document.getElementById("fontColor").value,
   bgColor: document.getElementById("bgColor").value,
   bgOpacity: document.getElementById("bgOpacity").value,
-  textStroke: document.getElementById("textStroke").value,
-  textShadow: document.getElementById("textShadow").value
+  textStroke: document.getElementById("textStroke").checked,
+  textShadow: document.getElementById("textShadow").checked,
 });
 
 const setFormValues = (settings) => {
-  document.getElementById("fontSize").value = settings.fontSize || DEFAULTS.fontSize;
-  document.getElementById("fontColor").value = settings.fontColor || DEFAULTS.fontColor;
-  document.getElementById("bgColor").value = settings.bgColor || DEFAULTS.bgColor;
-  document.getElementById("bgOpacity").value = settings.bgOpacity || DEFAULTS.bgOpacity;
-  document.getElementById("textStroke").value = settings.textStroke || DEFAULTS.textStroke;
-  document.getElementById("textShadow").value = settings.textShadow || DEFAULTS.textShadow;
+  document.getElementById("fontSize").value =
+    settings.fontSize || DEFAULTS.fontSize;
+
+  document.getElementById("fontColor").value =
+    settings.fontColor || DEFAULTS.fontColor;
+
+  document.getElementById("bgColor").value =
+    settings.bgColor || DEFAULTS.bgColor;
+
+  document.getElementById("bgOpacity").value =
+    settings.bgOpacity || DEFAULTS.bgOpacity;
+
+  document.getElementById("textStroke").checked = Boolean(
+    settings.textStroke === true || settings.textStroke === "yes",
+  );
+
+  document.getElementById("textShadow").checked = Boolean(
+    settings.textShadow === true || settings.textShadow === "yes",
+  );
 };
 
 store.subscribe((state) => {

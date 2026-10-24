@@ -7,7 +7,9 @@
 body {
   background-color: #1e1e1e;
   color: #cccccc;
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  font-family:
+    -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial,
+    sans-serif;
   font-size: 14px;
   line-height: 1.4;
   min-width: 320px;
@@ -169,7 +171,9 @@ body {
   font-size: 13px;
   height: 38px;
   width: 100%;
-  transition: background-color 0.15s, color 0.15s;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
 }
 
 .reset-button:hover {
@@ -179,4 +183,72 @@ body {
 
 .reset-button:active {
   background-color: #1e1e1e;
+}
+
+.switch-group {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: center;
+  height: 38px;
+  background-color: #2d2d2d;
+  border: 1px solid #474747;
+  border-radius: 2px;
+  padding: 0 10px;
+}
+
+.switch {
+  position: relative;
+  display: inline-block;
+  width: 36px;
+  height: 20px;
+  flex-shrink: 0;
+  cursor: pointer;
+}
+
+.switch input {
+  opacity: 0;
+  width: 0;
+  height: 0;
+  position: absolute;
+}
+
+.slider {
+  position: absolute;
+  inset: 0;
+  background-color: #3c3c3c;
+  border: 1px solid #555555;
+  border-radius: 20px;
+  transition:
+    background-color 0.2s,
+    border-color 0.2s;
+}
+
+.slider::before {
+  position: absolute;
+  content: "";
+  height: 12px;
+  width: 12px;
+  left: 3px;
+  bottom: 3px;
+  background-color: #cccccc;
+  border-radius: 50%;
+  transition:
+    transform 0.2s,
+    background-color 0.2s;
+}
+
+.switch input:checked + .slider {
+  background-color: #007acc;
+  border-color: #007acc;
+}
+
+.switch input:checked + .slider::before {
+  transform: translateX(16px);
+  background-color: #ffffff;
+}
+
+.switch input:focus-visible + .slider {
+  outline: 2px solid #007acc;
+  outline-offset: 2px;
 }
