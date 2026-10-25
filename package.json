@@ -6,7 +6,8 @@
   "scripts": {
     "lint": "addons-linter src",
     "build": "web-ext build --source-dir src --overwrite-dest",
-    "start": "web-ext run --source-dir src"
+    "start": "web-ext run --source-dir src",
+    "mob": "node dev-scripts/run-android.js"
   },
   "devDependencies": {
     "addons-linter": "^7.1.0",
