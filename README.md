@@ -1,4 +1,4 @@
-# YouTube Subtitle Styler for Firefox
+# Pretty YouTube Subtitle Extension for Firefox
 
 A lightweight WebExtension for **Firefox for Android** and **Firefox Desktop** that customizes YouTube video subtitles (both auto-generated and manual captions) in real time.
 
@@ -17,39 +17,11 @@ A lightweight WebExtension for **Firefox for Android** and **Firefox Desktop** t
 
 ---
 
-## Directory Structure
-
-```
-subtitle-css/
-├── src/
-│   ├── manifest.json       # WebExtension Manifest V3
-│   ├── core/
-│   │   ├── constants.js    # Default values, style IDs
-│   │   ├── store.js        # Reactive Store for state management
-│   │   ├── css-builder.js  # Pure CSS generation function
-│   │   └── storage.js      # browser.storage.local wrapper
-│   ├── content/
-│   │   └── content.js      # Content script injecting styles into YouTube
-│   ├── popup/
-│   │   ├── popup.html      # UI structure
-│   │   ├── popup.css       # VS Code dark gray responsive styling
-│   │   ├── preview.js      # Live preview DOM renderer
-│   │   └── popup.js        # UI controller
-│   └── icons/
-│       ├── icon-48.png
-│       ├── icon-96.png
-│       └── icon-128.png
-├── package.json            # Scripts & development dependencies
-└── README.md
-```
-
----
-
 ## Prerequisites
 
 - [Node.js](https://nodejs.org/) (version 18 or higher)
 - [Firefox Desktop](https://www.mozilla.org/firefox/)
-- [Firefox for Android](https://play.google.com/store/apps/details?id=org.mozilla.firefox) (for mobile testing)
+- [Firefox for Android](https://play.google.com/store/apps/details?id=org.mozilla.firefox) (nightly for mobile testing)
 
 ---
 
