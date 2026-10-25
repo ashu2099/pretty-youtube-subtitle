@@ -1,12 +1,15 @@
 {
   "manifest_version": 3,
-  "name": "YouTube Subtitle Styler",
+  "name": "Pretty YouTube Subtitle",
   "version": "1.0.0",
   "description": "Customize YouTube subtitle font size, color, background opacity, stroke, and shadow.",
   "browser_specific_settings": {
     "gecko": {
-      "id": "yt-subtitle-styler@local",
-      "strict_min_version": "128.0"
+      "id": "youtube-subtitle-styler@ashudot2099",
+      "strict_min_version": "128.0",
+      "data_collection_permissions": {
+        "required": ["none"]
+      }
     }
   },
   "permissions": ["storage"],
