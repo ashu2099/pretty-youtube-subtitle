@@ -12,6 +12,9 @@ const getFormValues = () => ({
   fontColor: document.getElementById("fontColor").value,
   bgColor: document.getElementById("bgColor").value,
   bgOpacity: document.getElementById("bgOpacity").value,
+  textAlign:
+    document.querySelector(".group-btn.active")?.dataset.align ||
+    DEFAULTS.textAlign,
   textStroke: document.getElementById("textStroke").checked,
   textShadow: document.getElementById("textShadow").checked,
 });
@@ -29,13 +32,23 @@ const setFormValues = (settings) => {
   document.getElementById("bgOpacity").value =
     settings.bgOpacity || DEFAULTS.bgOpacity;
 
-  document.getElementById("textStroke").checked = Boolean(
-    settings.textStroke === true || settings.textStroke === "yes",
+  const alignVal = settings.textAlign || DEFAULTS.textAlign;
+
+  for (const btn of document.querySelectorAll(".group-btn")) {
+    btn.classList.remove("active");
+  }
+
+  const activeBtn = document.querySelector(
+    `.group-btn[data-align="${alignVal}"]`,
   );
 
-  document.getElementById("textShadow").checked = Boolean(
-    settings.textShadow === true || settings.textShadow === "yes",
-  );
+  if (activeBtn) {
+    activeBtn.classList.add("active");
+  }
+
+  document.getElementById("textStroke").checked = Boolean(settings.textStroke);
+
+  document.getElementById("textShadow").checked = Boolean(settings.textShadow);
 };
 
 store.subscribe((state) => {
@@ -57,6 +70,18 @@ const handleFormInput = () => {
 
 form.addEventListener("input", handleFormInput);
 form.addEventListener("change", handleFormInput);
+
+document
+  .getElementById("alignment-group")
+  .addEventListener("click", (event) => {
+    const btn = event.target.closest(".group-btn");
+    if (!btn) return;
+    for (const b of document.querySelectorAll(".group-btn")) {
+      b.classList.remove("active");
+    }
+    btn.classList.add("active");
+    store.setState(getFormValues());
+  });
 
 document.getElementById("resetBtn").addEventListener("click", () => {
   setFormValues(DEFAULTS);

@@ -1,24 +1,19 @@
-const { STYLE_ID, DEFAULTS, DEFAULT_CONFIG } = globalThis;
+const { STYLE_ID, DEFAULTS, STYLE_RULES } = globalThis;
 
 const buildCss = (settings) => {
-  const size =
-    parseInt(settings.fontSize, 10) || parseInt(DEFAULTS.fontSize, 10);
+  const size = parseInt(settings.fontSize || DEFAULTS.fontSize, 10);
+
   const color = settings.fontColor || DEFAULTS.fontColor;
   const bg = `rgb(from ${settings.bgColor || DEFAULTS.bgColor} r g b / ${settings.bgOpacity || DEFAULTS.bgOpacity})`;
+  const align = settings.textAlign || DEFAULTS.textAlign;
 
-  const isStroke =
-    settings.textStroke === true || settings.textStroke === "yes";
+  const stroke = settings.textStroke
+    ? STYLE_RULES.stroke.active
+    : STYLE_RULES.stroke.inactive;
 
-  const isShadow =
-    settings.textShadow === true || settings.textShadow === "yes";
-
-  const stroke = isStroke
-    ? DEFAULT_CONFIG.stroke.yes
-    : DEFAULT_CONFIG.stroke.no;
-
-  const shadow = isShadow
-    ? DEFAULT_CONFIG.shadow.yes
-    : DEFAULT_CONFIG.shadow.no;
+  const shadow = settings.textShadow
+    ? STYLE_RULES.shadow.active
+    : STYLE_RULES.shadow.inactive;
 
   return `
     .ytp-caption-segment {
@@ -30,7 +25,11 @@ const buildCss = (settings) => {
       ${shadow}
     }
     .caption-window {
-      ${DEFAULT_CONFIG.captionWindow}
+      ${STYLE_RULES.captionWindow}
+      text-align: ${align} !important;
+    }
+    .caption-visual-line {
+      text-align: ${align} !important;
     }
   `;
 };

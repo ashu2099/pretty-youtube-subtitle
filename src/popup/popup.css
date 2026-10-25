@@ -158,6 +158,57 @@ body {
   cursor: pointer;
 }
 
+.button-group {
+  display: flex;
+  width: 100%;
+}
+
+.group-btn {
+  flex: 1;
+  height: 38px;
+  background-color: #2d2d2d;
+  border: 1px solid #474747;
+  color: #cccccc;
+  cursor: pointer;
+  font-size: 13px;
+  font-weight: 500;
+  transition:
+    background-color 0.15s,
+    color 0.15s;
+}
+
+.group-btn:not(:first-child) {
+  border-left: none;
+}
+
+.group-btn:first-child {
+  border-top-left-radius: 2px;
+  border-bottom-left-radius: 2px;
+}
+
+.group-btn:last-child {
+  border-top-right-radius: 2px;
+  border-bottom-right-radius: 2px;
+}
+
+.group-btn:hover {
+  background-color: #383838;
+  color: #ffffff;
+}
+
+.group-btn.active {
+  background-color: #007acc;
+  border-color: #007acc;
+  color: #ffffff;
+  font-weight: 600;
+}
+
+.group-btn:focus-visible {
+  outline: 2px solid #007acc;
+  outline-offset: 1px;
+  z-index: 1;
+}
+
 .form-footer {
   padding-top: 6px;
 }

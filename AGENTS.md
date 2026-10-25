@@ -19,6 +19,7 @@
 - Before adding complexity for a speculative or vanishingly unlikely race or security edge case, explain the concrete failure mode, likelihood, and complexity cost to the user and get their buy-in. Do not silently expand scope for theoretical robustness.
 - Avoid using the `any` type
 - Rely on type inference when possible; avoid explicit type annotations or interfaces unless necessary for exports or clarity
+- In JavaScript files, always put an empty line below any statement that wraps across multiple lines.
 
 Reduce total variable count by inlining when a value is only used once.
 

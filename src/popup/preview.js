@@ -1,24 +1,19 @@
-const { DEFAULTS, DEFAULT_CONFIG } = globalThis;
+const { DEFAULTS, STYLE_RULES } = globalThis;
 
 export const updatePreview = (previewEl, settings) => {
-  const size =
-    parseInt(settings.fontSize, 10) || parseInt(DEFAULTS.fontSize, 10);
+  const size = parseInt(settings.fontSize || DEFAULTS.fontSize, 10);
+
   const color = settings.fontColor || DEFAULTS.fontColor;
   const bg = `rgb(from ${settings.bgColor || DEFAULTS.bgColor} r g b / ${settings.bgOpacity || DEFAULTS.bgOpacity})`;
+  const align = settings.textAlign || DEFAULTS.textAlign;
 
-  const isStroke =
-    settings.textStroke === true || settings.textStroke === "yes";
+  const stroke = settings.textStroke
+    ? STYLE_RULES.stroke.active
+    : STYLE_RULES.stroke.inactive;
 
-  const isShadow =
-    settings.textShadow === true || settings.textShadow === "yes";
-
-  const stroke = isStroke
-    ? DEFAULT_CONFIG.stroke.yes
-    : DEFAULT_CONFIG.stroke.no;
-
-  const shadow = isShadow
-    ? DEFAULT_CONFIG.shadow.yes
-    : DEFAULT_CONFIG.shadow.no;
+  const shadow = settings.textShadow
+    ? STYLE_RULES.shadow.active
+    : STYLE_RULES.shadow.inactive;
 
   previewEl.style.cssText = `
     font-size: ${size}px !important;
@@ -28,4 +23,15 @@ export const updatePreview = (previewEl, settings) => {
     ${stroke}
     ${shadow}
   `;
+
+  if (previewEl.parentElement) {
+    const alignMap = {
+      left: "flex-start",
+      center: "center",
+      right: "flex-end",
+    };
+
+    previewEl.parentElement.style.justifyContent =
+      alignMap[align] || "flex-start";
+  }
 };
